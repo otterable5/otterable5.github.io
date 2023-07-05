@@ -1,0 +1,85 @@
+baseURL = "https://otterable.github.io/"
+paginate = 9
+
+#-------------------------------
+defaultContentLanguage = 'en'
+[languages]
+  [languages.en]
+     title = "Ermine.de"
+  [languages.de]
+     title = "Ermine.de"
+
+
+[[params.plugins.js]]
+link = "js/search.js"
+
+
+
+[search]
+enable = true
+primary_color = "#ce8460"
+include_sections = ["post", "shop"] # if `include_sections` empty, then section's will come from `mainSections`
+include_all_sections = false # if `include_all_sections` is true, then comment out the `include_sections`
+show_image = false
+show_description = false
+show_tags = false
+show_categories = false
+
+# Main Menu
+[menu]
+
+  [[menu.main]]
+    identifier = "Author site"
+    name = "Author site"
+    url = "https://ermine.de"
+    weight = 1
+	
+	  [[menu.main]]
+    identifier = "About"
+    name = "About"
+    url = "https://ermine.de"
+    weight = 1
+
+
+
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact"
+    weight = 1
+
+
+	
+
+
+[params]
+  logo = "/images/ottor2.png" # You can add own logo. For example "/images/logo.png".
+  description = "Ermine.de"
+
+
+
+  #-------------------------------
+  # Hero Settings
+  [params.hero]
+    hero__title = "Aditu"
+    hero__description = "Thoughts, stories and ideas."
+    hero__image = "https://via.placeholder.com/1260x840"
+
+  #-------------------------------
+  
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+
+[markup.highlight]
+  codeFences = true
+  guessSyntax = true
+  noClasses = false

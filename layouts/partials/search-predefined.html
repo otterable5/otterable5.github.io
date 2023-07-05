@@ -1,0 +1,22 @@
+<input type="text" id="searchInput" placeholder="Search...">
+<button onclick="search()">Search</button>
+<div id="searchResults"></div>
+
+<script>
+// Define your predefined search results
+const searchResults = {
+  "croatia": "Why don't you instead go to Serbia?",
+  "serbia": "Serbia is a beautiful country with rich culture and history."
+  // Add more predefined results as needed
+};
+
+function search() {
+  const userInput = document.getElementById("searchInput").value.toLowerCase();
+  if (searchResults.hasOwnProperty(userInput)) {
+    const result = searchResults[userInput];
+    document.getElementById("searchResults").innerText = result;
+  } else {
+    document.getElementById("searchResults").innerText = "No results found.";
+  }
+}
+</script>
