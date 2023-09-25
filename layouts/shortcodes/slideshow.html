@@ -1,0 +1,102 @@
+<div class="slideshow-container" data-slideshow="slideshow1">
+  <div class="slide fade">
+    <img src="geister1.png" alt="Image 1">
+  </div>
+  <div class="slide fade">
+    <img src="geister2.png" alt="Image 1">
+  </div>
+    <div class="slide fade">
+    <img src="geister3.png" alt="Image 1">
+  </div>
+    <div class="slide fade">
+    <img src="geister4.png" alt="Image 1">
+  </div>
+  </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  let slideshowElements = document.querySelectorAll('.slideshow-container');
+  slideshowElements.forEach(el => initializeSlideshow(el));
+});
+
+function initializeSlideshow(element) {
+  let slideIndex = 1;
+  let autoSlide;
+  const autoSlideInterval = 5000; // 5 seconds
+
+  function showSlides(n) {
+    const slides = element.getElementsByClassName("slide");
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[n - 1].style.display = "block";
+  }
+
+  function plusSlides(n, stopAuto) {
+    if (stopAuto) {
+      clearInterval(autoSlide);
+    }
+    const slides = element.getElementsByClassName("slide");
+    const currentSlide = slides[slideIndex - 1].getElementsByTagName("img")[0].src;
+
+    if (currentSlide.endsWith("geister4.png")) {  // Change this to accommodate your actual last image
+      slideIndex = 1; // Reset to first slide
+    } else {
+      slideIndex += n;
+    }
+
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+    if (slideIndex < 1) {
+      slideIndex = slides.length;
+    }
+
+    showSlides(slideIndex);
+  }
+
+  showSlides(slideIndex);
+  autoSlide = setInterval(() => plusSlides(1, false), autoSlideInterval);
+}
+</script>
+
+
+
+
+<style>
+ .slideshow-container {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+}
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+</style>
+

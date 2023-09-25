@@ -1,40 +1,99 @@
+<h1 align=center>Hugo Scroll 📜 <a href="https://zjedi.github.io/singlepage/" rel="nofollow">Demo</a></h1>
 
-### Demo
+Clean, responsive, single-page [Hugo](https://gohugo.io/) website theme.
+
+[![singlepage](https://img.shields.io/badge/Hugo--Themes-HugoScroll-blue)](https://themes.gohugo.io/themes/singlepage/)
+![Test](https://github.com/zjedi/singlepage/workflows/CI/badge.svg?branch=master&event=push)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a56faf45-76fa-4bdf-b9d4-35cfc7d620cf/deploy-status)](https://app.netlify.com/sites/singlepage/deploys)
+[![GitHub](https://img.shields.io/github/license/zjedi/singlepage)](https://github.com/zjedi/singlepage/blob/master/LICENSE)
+![code-size](https://img.shields.io/github/languages/code-size/zjedi/singlepage)
+
+Promo image which may be a bit outdated:<br/>
+![Screenshot Hugo Scroll Theme](https://raw.githubusercontent.com/zjedi/singlepage/master/images/tn.png)
+
+## ⭐ Feature highlights
+- Responsive to screen size/shape
+- SEO friendly
+- Customizable
+- Video cover
+- [Fork Awesome Icons][fork-awesome-icons] out of the box
+- Header logo
+- Visual guards to guarantee readability
+- External links
+- JS/CSS Assets optimized (Minification, Fingerpriting, pipeline-processed 
+into single file)
+- git info in footer (opt-in)
+
+### Playing around with our example site
+
+If you simply want to check out the `exampleSite`, you can run
+```
+
+```
 
 
-* * *
+If you are starting fresh, simply copy over the contents of the `exampleSite`-directory included in this theme to your source directory. That should give you a good idea about how things work, and then you can go on from there to make the site your own.
 
-### Theme features
+Please check out the [config.toml](https://github.com/zjedi/singlepage/blob/master/exampleSite/config.toml) included in the [exampleSite](https://github.com/zjedi/singlepage/tree/master/exampleSite) of this theme.
 
-- 100% responsive and clean theme
-- Valid HTML5
-- Optimized for mobile devices
-- Compatible with modern browsers
-- Super fast performance ⚡⚡⚡
-- Minimal Design
-- Social Sharing Buttons
-- Syntax Highlighting
-- Instant Search
-- Medium style image zoom
-- Gallery Support
-- Tags Support
-- Custom logo support
-- Ajax Load Posts
-- Supports Google Analytics
-- Supports Disqus Comments
-- Supports MailChimp newsletter
-- Ionicons Icons
-- Google Fonts
+You can add **a new section to the homepage** by running `hugo new homepage/my-new-content.md` (or craft the file manually)
 
-* * *
+To create **a page separate from the homepage**, run `hugo new my-new-page.md`
 
-### Deployment
 
-To run the theme locally, navigate to the theme directory and run `hugo` to start building websites, then run `hugo server` or `hugo server --disableFastRender` to start the HUGO server.
+## 🔧 Feature details 🔨
 
-I would recommend checking the [Deployment Methods](https://gohugo.io/hosting-and-deployment/) page on HUGO website.
+### Customizing CSS
+Add a [`custom_head.html`](https://github.com/zjedi/singlepage/blob/master/exampleSite/layouts/partials/custom_head.html) file to your `layouts/partials` directory. 
+- You can use `<style>` tag to embed the overrides (better performance-wise)
+- Alternatively you can `<link>` your own `custom.css`
 
-* * *
+`CSS` variables `var(--some-var-name)` from `assets\css\variables.scss` can be overridden by adding
+```scss
+:root {
+  --some-var-name: blue!important;
+}
+```
+### Icons
+This theme includes the full set of [Fork Awesome 1.2.0 Icons][fork-awesome-icons]. Use the `{{<icon>}}`-[shortcode][hugo-shortcodes] with the respective "fa fa-ICONNAME"-`class` to use an icon directly in your `.markdown` files à la
+```markdown
+Look at this nice »envelope«-icon: `{{<icon class="fa fa-envelope">}}`. I took this from https://forkaweso.me/Fork-Awesome/icon/envelope/ :-)
+```
+### Header logo
+Configured in `_index.md`, see `exampleSite`: `header_logo: "images/chef-hat.png"`
 
-### Documentation
+### Video cover
+Set `header_use_video: true` in `/exampleSite/content/_index.md` and define video source via custom partial, such as `exampleSite/layouts/partials/custom_header_video.html`.
 
+### Footer version information
+In order to see technical version information (extracted from Hugo's [GitInfo](https://gohugo.io/variables/git/))) set the following general option in your config.toml: `enableGitInfo = true`
+
+### External links
+You can add an external link in the menu, see `external.md` in the `exampleSite`.
+
+You can also use `extlink` shortcode to create a link opening in a new tab:
+```markdown
+Visit as at {{<extlink text="Instagram" href="https://www.instagram.com/yourInstagramName/">}}
+```
+Referencing and showing icons in front of the link text is possible with a new parameter `icon`:
+```markdown
+Visit as at {{<extlink icon="fa fa-instagram" text="Instagram" href="https://www.instagram.com/yourInstagramName/">}}
+```
+
+## 🐛 Issues / 💡 Feedback / 👑 Contributing
+[Discussion](https://github.com/zjedi/singlepage/discussions) for Q&A (when unsure), 
+[Issues](https://github.com/zjedi/singlepage/issues) for tracking,
+[Pull Requests](https://github.com/zjedi/singlepage/pulls) for contributions.
+
+
+See [contributing guideline](https://github.com/zjedi/singlepage/blob/master/contributing.md) for more.
+
+## 👏 Special Thanks 
+- [Jan Raasch](https://www.janraasch.com), original author of theme
+- [Yonatan Wolowelsky](https://github.com/grmmph), author of [GhostScroll](https://github.com/grmmph/GhostScroll) theme, which formed the basis of this [Hugo](https://gohugo.io/) theme.
+- [Pexels](https://www.pexels.com), for supplying _free_ stock photos.
+
+
+[hugo-setup-guide]: https://gohugo.io/getting-started/installing
+[fork-awesome-icons]: https://forkaweso.me/Fork-Awesome/icons/
+[hugo-shortcodes]: https://gohugo.io/content-management/shortcodes/

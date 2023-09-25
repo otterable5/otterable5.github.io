@@ -1,40 +1,39 @@
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="{{ "favicon.ico" | relURL }}">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-  <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
-  <meta name="description" content="{{if .IsHome}}{{ .Site.Params.description }}{{else}}{{ .Description }}{{end}}">
+<title>{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</title>
 
+{{ with .Site.Params.favicon }}
+  <link rel="shortcut icon" href="{{ . | absURL }}" type="image/png"
+/>{{ end }}
 
-  <script src="/js/custom.js"></script>
+{{ with .Site.Params.description }}
+  <meta name="description" content="{{ . }}"
+/>{{ end }}
+{{ with .Site.Params.meta.keywords }}
+  <meta name="keywords" content="{{ . }}"
+/>{{ end }}
+<meta name="referrer" content="no-referrer-when-downgrade" />
 
-  {{ with .OutputFormats.Get "rss" -}}
-  {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-  {{ end }}
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+{{ $stylesheetNormalize := resources.Get "css/normalize.css" }}
+{{ $stylesheetFA := resources.Get "css/fork-awesome.css" }}
+{{ $stylesheetFonts := resources.Get "css/fonts.css" }}
+{{ $stylesheetGeneric := resources.Get "css/generic.css" }}
 
+{{ $stylesheetScreen := ( resources.Get "css/_index.scss" | resources.ToCSS ) }}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
+{{ $stylesheet := slice $stylesheetNormalize $stylesheetFA $stylesheetFonts $stylesheetGeneric $stylesheetScreen | resources.Concat "css/style.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $stylesheet.Permalink }}" type="text/css" integrity="{{ $stylesheet.Data.Integrity }}" />
 
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600%7CPoppins:400,600,700&display=swap" as="style">
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+{{ template "_internal/schema.html" . }}
 
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600%7CPoppins:400,600,700&display=swap" rel="stylesheet">
-
-  <!-- Ionicons -->
-  <link rel="preload" href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css" as="style">
-
-  <link href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css" rel="stylesheet">
-
-  <!-- CSS -->
-  {{ if .Site.IsServer }}
-  {{ $style := resources.Get "sass/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS (dict "targetPath" "css/main.css" "enableSourceMap" true) }}
-  <link rel="stylesheet" href="{{ ($style).RelPermalink }}">
-  {{ else }}
-  {{ $style := resources.Get "sass/main.scss" | resources.ExecuteAsTemplate "main.scss" . | toCSS (dict "targetPath" "css/main.css" "enableSourceMap" false) }}
-  <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
-  {{ end }}
-
-</head>
+<!-- A partial to be overwritten by the user.
+     Simply place a custom_head.html into
+     your local /layouts/partials-directory -->
+{{- partial "custom_head.html" . -}}

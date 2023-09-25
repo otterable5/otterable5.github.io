@@ -1,85 +1,53 @@
-baseURL = "https://otterable.github.io/"
-paginate = 9
+baseURL = "https://otterable3.github.io"
 
-#-------------------------------
-defaultContentLanguage = 'en'
-[languages]
-  [languages.en]
-     title = "Ermine.de"
-  [languages.de]
-     title = "Ermine.de"
+# This is a "one page"-website, so we do not need these kinds of pages...
+disableKinds = ["section", "taxonomy", "term", "RSS", "robotsTXT"]
+
+defaultContentLanguage = "en"
 
 
-[[params.plugins.js]]
-link = "js/search.js"
+# The browser tab name
+title = "Ticket to ride - Wien"
 
+# In order to add version information in the page's footer set to true.
+# enableGitInfo = true
 
-
-[search]
-enable = true
-primary_color = "#ce8460"
-include_sections = ["post", "shop"] # if `include_sections` empty, then section's will come from `mainSections`
-include_all_sections = false # if `include_all_sections` is true, then comment out the `include_sections`
-show_image = false
-show_description = false
-show_tags = false
-show_categories = false
-
-# Main Menu
-[menu]
-
-  [[menu.main]]
-    identifier = "Author site"
-    name = "Author site"
-    url = "https://ermine.de"
-    weight = 1
-	
-	  [[menu.main]]
-    identifier = "About"
-    name = "About"
-    url = "https://ermine.de"
-    weight = 1
-
-
-
-  [[menu.main]]
-    identifier = "contact"
-    name = "Contact"
-    url = "/contact"
-    weight = 1
-
-
-	
-
-
+# Theme-specific variables `.Site.Params.myParamName`
 [params]
-  logo = "/images/ottor2.png" # You can add own logo. For example "/images/logo.png".
-  description = "Ermine.de"
+
+    # The path to your "favicon". This should be a square (at least 32px x 32px) png-file.
+    favicon = "favicon.ico"
+
+    # These "images" are used for the structured data templates. This will show up, when
+    # services like Twitter or Slack want to generate a preview of a link to your site.
+    # See https://gohugo.io/templates/internal#twitter-cards and https://gohugo.io/templates/internal#open-graph.
+    # NOT the actual header background image, go to _index.md instead
+    images = ["zug-1.jpg"]
+
+    # When set true, it creates a visual guard (partially transparent rounded box), preventing non-ideal background images from interfering with title/description headings
+    # Ideal images are homogenous around the centre and contrasting to the text.
+    # see CSS classes: .title-and-description-guard, .blog-title, .blog-description
+    # see _index.md header_headline and header_subheadline
+    title_guard = false
+
+    # Another "title" :-). This one is used as the site_name on the Hugo's internal
+    # opengraph structured data template.
+    # See https://ogp.me/ and https://gohugo.io/templates/internal#open-graph.
+    title = "Ticket to ride - Wien"
+
+    # The "description" of your website. This is used in the meta data of your generated html.
+    description = "A massive expansion for Ticket to ride"
+
+    # A "copyright"-line to be added at the bottom of the page.
+    # Hint: Plain HTML is supported in here as well. So you may e.g. add a link to your legal imprint-page.
 
 
+    # This theme will, by default, inject a design-by-line at the bottom of the page.
+    # You can turn it off, but we would really appreciate if you don’t :-)
+    hidedesignbyline = false
 
-  #-------------------------------
-  # Hero Settings
-  [params.hero]
-    hero__title = "Aditu"
-    hero__description = "Thoughts, stories and ideas."
-    hero__image = "https://via.placeholder.com/1260x840"
-
-  #-------------------------------
-  
-
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-
-
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
-
-
-[markup.highlight]
-  codeFences = true
-  guessSyntax = true
-  noClasses = false
+    # The sections of the home page alternate styling. Mark invert as true to swap the styling of the sections
+    invertSectionColors = false
+    
+    [params.meta]
+        keywords = "some, keywords, for, seo, you, know, google, duckduckgo, and, such"
