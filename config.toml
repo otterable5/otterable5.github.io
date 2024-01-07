@@ -7,7 +7,7 @@ defaultContentLanguage = "en"
 
 
 # The browser tab name
-title = "Ticket to ride - Wien"
+title = "Der Geisterschatz von Siebenbürgen"
 
 # In order to add version information in the page's footer set to true.
 # enableGitInfo = true
@@ -33,7 +33,7 @@ title = "Ticket to ride - Wien"
     # Another "title" :-). This one is used as the site_name on the Hugo's internal
     # opengraph structured data template.
     # See https://ogp.me/ and https://gohugo.io/templates/internal#open-graph.
-    title = "Ticket to ride - Wien"
+    title = "Der Geisterschatz von Siebenbürgen"
 
     # The "description" of your website. This is used in the meta data of your generated html.
     description = "A massive expansion for Ticket to ride"

@@ -9,6 +9,6 @@ header_use_video: false
 header_logo: "images/otterferret1.jpg"
 #
 # Headers are safeHTML, you can use HTML tags such as b,i,u,br
-header_headline: "Ticket to Ride - Wien"
+header_headline: "Der Geisterschatz von Siebenbürgen"
 header_subheadline: "<b>..and other custom maps!</b>"
 ---

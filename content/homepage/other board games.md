@@ -6,4 +6,4 @@ header_menu: true
 
 
 
-[> Ticket to Ride - Wien <](https://cuteotter.eu)
+[> Der Geisterschatz von Siebenbürgen <](https://cuteotter.eu)
